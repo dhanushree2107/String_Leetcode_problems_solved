@@ -1,0 +1,51 @@
+/*Placement note
+
+இந்த problem-ல full code memorize பண்ணாதே.
+
+Core logic மட்டும் remember:
+
+String[] → rows store
+
+ind → current row
+
+ch → current character
+
+b[ind] += ch → current row-ல் character add
+
+top/bottom → direction change
+
+g ? 1 : -1 → down/up
+
+finally → all rows combine
+
+இதுதான் Zigzag Conversion-ன் actual logic.*/
+
+class Solution {
+    public String convert(String s, int numRows) {
+        if (numRows == 1) {
+            return s;
+        }
+        String[] b = new String[numRows];// new string string create pannu rom 
+        for (int i = 0; i < numRows; i++) {
+            b[i] = "";// empty string ag declare pannurom
+        }
+        int ind = 0;// index o nu declare pannu rom 
+        boolean g = false;// intilaze ah boolean ah false ah vachu rom 
+        for (char ch : s.toCharArray()) {// for each loop la oru word ah characer ah cover pannikurom
+            b[ind] += ch;// intha idex la oru word oda indexum soter ah word add agum 
+            if (ind == 0 || ind == numRows - 1) { 
+                g = !g;
+            }
+            ind += g ? 1 : -1; // true ah irutha +1 add agum  false irutha-1 agum 
+        }
+        String c = ""; // ithula string store agum 
+        for (String d : b) { 
+            c += d; // ithula string ellama add pannu return pannum 
+        }
+        return c;
+    }
+}
+
+
+
+
