@@ -1,0 +1,59 @@
+/*Logic
+
+Example:
+
+jewels = "aA"
+stones = "aAAbbbb"
+
+stones-ஐ one by one check பண்ணுறோம்:
+
+a → jewels-la irukku → count = 1
+A → irukku → count = 2
+A → irukku → count = 3
+b → illa
+b → illa
+b → illa
+b → illa
+
+Output:
+
+3
+⭐ Important pattern
+char ch = stones.charAt(i);
+
+→ stones-லிருந்து ஒரு character எடுக்கிறது.
+
+jewels.indexOf(ch)
+
+→ அந்த character jewels-க்குள் இருக்கிறதா check பண்ணுகிறது.
+
+indexOf() result:
+
+>= 0 → found
+-1   → not found
+
+So:
+
+jewels.indexOf(ch) != -1
+
+means:
+
+"இந்த character jewels-க்குள் இருக்கிறது."
+
+இது simple String traversal + charAt() + indexOf() pattern. Placement-ku note pannikka worth it.*/
+
+
+
+
+class Solution {
+    public int numJewelsInStones(String jewels, String stones) {
+        int count =0;
+        for(int i=0;i<stones.length();i++){
+            char ch =stones.charAt(i);
+            if(jewels.indexOf(ch)!=-1){
+                count++;
+            }
+        }
+        return count;
+    }
+}
